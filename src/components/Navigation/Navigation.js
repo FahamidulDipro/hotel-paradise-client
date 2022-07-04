@@ -32,6 +32,22 @@ const Navigation = () => {
               >
                 Statistics
               </NavLink>
+              <NavLink
+                to="/login"
+                className={({ isActive }) =>
+                  isActive ? "active-link" : "link"
+                }
+              >
+                Login
+              </NavLink>
+              <NavLink
+                to="/signup"
+                className={({ isActive }) =>
+                  isActive ? "active-link" : "link"
+                }
+              >
+                Signup
+              </NavLink>
             </Nav>
           </Navbar.Collapse>
         </Container>
