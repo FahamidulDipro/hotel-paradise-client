@@ -16,11 +16,13 @@ const Room = ({ room }) => {
           <p>
             <b>Price:</b> {price}
           </p>
-          <p>
-            <b>Status:</b> {reservationStatus ? "booked" : "not booked yet"}
-          </p>
-
-          <Button variant="primary">Go somewhere</Button>
+          {reservationStatus ? (
+            <p className="text-danger">
+              <b>Booked</b>
+            </p>
+          ) : (
+            <Button variant="primary">Book Reservation</Button>
+          )}
         </Card.Body>
       </Card>
     </Col>
