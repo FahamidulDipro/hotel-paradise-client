@@ -8,13 +8,21 @@ import Statistics from "./components/Statistics/Statistics";
 import Login from "./components/Login/Login";
 import Signup from "./components/Signup/Signup";
 import NotFound from "./components/NotFound/NotFound";
+import RequireAuth from "./components/RequireAuth/RequireAuth";
 
 function App() {
   return (
     <div className="App">
       <Navigation></Navigation>
       <Routes>
-        <Route path="/" element={<Home></Home>}></Route>
+        <Route
+          path="/"
+          element={
+            <RequireAuth>
+              <Home></Home>
+            </RequireAuth>
+          }
+        ></Route>
         <Route path="/statistics" element={<Statistics></Statistics>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/signup" element={<Signup></Signup>}></Route>

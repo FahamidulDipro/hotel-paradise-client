@@ -1,11 +1,18 @@
 import React from "react";
-import { Button, Navbar, Container, Nav } from "react-bootstrap";
+import { Navbar, Container, Nav } from "react-bootstrap";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { NavLink } from "react-router-dom";
+import { signOut } from "firebase/auth";
+
+import { NavLink, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 import "./Navigation.css";
 const Navigation = () => {
   const [user] = useAuthState(auth);
+  const navigate = useNavigate();
+  const logout = () => {
+    signOut(auth);
+    navigate("/login");
+  };
   return (
     <>
       <Navbar bg="light" expand="lg">
@@ -39,7 +46,10 @@ const Navigation = () => {
               {user ? (
                 <>
                   <span className="m-2 fw-bold text-info">{user?.email} </span>
-                  <button className="btn btn-primary text-uppercase">
+                  <button
+                    className="btn btn-primary text-uppercase"
+                    onClick={logout}
+                  >
                     Logout
                   </button>
                 </>
