@@ -1,8 +1,11 @@
 import React from "react";
 import { Button, Navbar, Container, Nav } from "react-bootstrap";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { NavLink } from "react-router-dom";
+import auth from "../../firebase.init";
 import "./Navigation.css";
 const Navigation = () => {
+  const [user] = useAuthState(auth);
   return (
     <>
       <Navbar bg="light" expand="lg">
@@ -32,22 +35,35 @@ const Navigation = () => {
               >
                 Statistics
               </NavLink>
-              <NavLink
-                to="/login"
-                className={({ isActive }) =>
-                  isActive ? "active-link" : "link"
-                }
-              >
-                Login
-              </NavLink>
-              <NavLink
-                to="/signup"
-                className={({ isActive }) =>
-                  isActive ? "active-link" : "link"
-                }
-              >
-                Signup
-              </NavLink>
+
+              {user ? (
+                <>
+                  <span className="m-2 fw-bold text-info">{user?.email} </span>
+                  <button className="btn btn-primary text-uppercase">
+                    Logout
+                  </button>
+                </>
+              ) : (
+                <>
+                  {" "}
+                  <NavLink
+                    to="/login"
+                    className={({ isActive }) =>
+                      isActive ? "active-link" : "link"
+                    }
+                  >
+                    Login
+                  </NavLink>
+                  <NavLink
+                    to="/signup"
+                    className={({ isActive }) =>
+                      isActive ? "active-link" : "link"
+                    }
+                  >
+                    Signup
+                  </NavLink>
+                </>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Container>
