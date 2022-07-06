@@ -75,7 +75,7 @@ const Navigation = () => {
                 <>
                   <span className="m-2 fw-bold text-info">{user?.email} </span>
                   <button
-                    className="btn btn-primary text-uppercase"
+                    className="btn btn-primary text-uppercase fw-bold"
                     onClick={logout}
                   >
                     Logout
