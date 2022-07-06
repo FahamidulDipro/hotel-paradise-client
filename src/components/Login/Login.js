@@ -47,11 +47,13 @@ const Login = () => {
             {...register("email", { required: true })}
             type="email"
             className="form-control my-3"
+            placeholder="Email"
           />
           <input
             {...register("password", { required: true })}
             type="password"
             className="form-control my-3"
+            placeholder="Password"
           />
 
           <input

@@ -64,21 +64,25 @@ const Signup = () => {
             {...register("name", { required: true })}
             type="text"
             className="form-control my-3 "
+            placeholder="Name"
           />
           <input
             {...register("email", { required: true })}
             type="email"
             className="form-control my-3"
+            placeholder="Email"
           />
           <input
             {...register("password", { required: true })}
             type="password"
             className="form-control my-3"
+            placeholder="Password"
           />
           <input
             {...register("cpassword", { required: true })}
             type="password"
             className="form-control my-3"
+            placeholder="Confirm Password"
           />
           {passwordMatchError}
 
