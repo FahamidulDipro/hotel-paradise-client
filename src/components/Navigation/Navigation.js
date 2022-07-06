@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { signOut } from "firebase/auth";
@@ -8,6 +8,15 @@ import auth from "../../firebase.init";
 import "./Navigation.css";
 const Navigation = () => {
   const [user] = useAuthState(auth);
+  //Loading Users from database
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:5000/users")
+      .then((res) => res.json())
+      .then((data) => setUsers(data));
+  }, []);
+  const selectedUser = users.find(u=>u.email===user?.email)
+  const adminStatus = selectedUser?.role;
   const navigate = useNavigate();
   const logout = () => {
     signOut(auth);
@@ -16,6 +25,7 @@ const Navigation = () => {
   return (
     <>
       <Navbar bg="light" expand="lg">
+        {console.log(adminStatus)}
         <Container>
           <NavLink to="/" className="text-decoration-none ">
             <Navbar.Brand className="text-primary fw-bold text-uppercase">
@@ -34,6 +44,7 @@ const Navigation = () => {
               >
                 Home
               </NavLink>
+             
               <NavLink
                 to="/statistics"
                 className={({ isActive }) =>
@@ -42,6 +53,16 @@ const Navigation = () => {
               >
                 Statistics
               </NavLink>
+             {
+              adminStatus? <NavLink
+              to="/userDetails"
+              className={({ isActive }) =>
+                isActive ? "active-link" : "link"
+              }
+            >
+              User Details
+            </NavLink>:null
+             }
 
               {user ? (
                 <>
