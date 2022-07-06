@@ -9,7 +9,7 @@ const UpdatePrice = () => {
   //Fetching all room data
   const [rooms, setRooms] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/rooms")
+    fetch("https://serene-badlands-89080.herokuapp.com/rooms")
       .then((res) => res.json())
       .then((data) => setRooms(data));
   }, []);
@@ -17,7 +17,7 @@ const UpdatePrice = () => {
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
     data.roomId = roomId;
-    fetch("http://localhost:5000/updatePrice", {
+    fetch("https://serene-badlands-89080.herokuapp.com/updatePrice", {
       method: "PUT",
       headers: {
         "content-type": "application/json",

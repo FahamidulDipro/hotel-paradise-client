@@ -11,7 +11,7 @@ const Navigation = () => {
   //Loading Users from database
   const [users, setUsers] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/users")
+    fetch("https://serene-badlands-89080.herokuapp.com/users")
       .then((res) => res.json())
       .then((data) => setUsers(data));
   }, []);

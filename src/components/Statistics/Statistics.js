@@ -6,12 +6,12 @@ const Statistics = () => {
   const [users, setUsers] = useState([]);
   const [reservations, setReservations] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/users")
+    fetch("https://serene-badlands-89080.herokuapp.com/users")
       .then((res) => res.json())
       .then((data) => setUsers(data));
   }, []);
   useEffect(() => {
-    fetch("http://localhost:5000/reservations")
+    fetch("https://serene-badlands-89080.herokuapp.com/reservations")
       .then((res) => res.json())
       .then((data) => setReservations(data));
   }, []);

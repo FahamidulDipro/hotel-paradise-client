@@ -5,7 +5,7 @@ import Room from '../Room/Room';
 const Rooms = () => {
     const [rooms, setRooms] = useState([]);
     useEffect(() => {
-      fetch("http://localhost:5000/rooms")
+      fetch("https://serene-badlands-89080.herokuapp.com/rooms")
         .then((res) => res.json())
         .then((data) => setRooms(data));
     }, []);

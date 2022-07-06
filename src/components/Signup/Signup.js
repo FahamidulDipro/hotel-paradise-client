@@ -12,7 +12,7 @@ const Signup = () => {
   const navigate = useNavigate();
 
   const addUser = (email, currentUser) => {
-    fetch(`http://localhost:5000/user/${email}`, {
+    fetch(`https://serene-badlands-89080.herokuapp.com/user/${email}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

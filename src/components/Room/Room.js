@@ -11,7 +11,7 @@ const Room = ({ room }) => {
   //Loading Users from database
   const [users, setUsers] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/users")
+    fetch("https://serene-badlands-89080.herokuapp.com/users")
       .then((res) => res.json())
       .then((data) => setUsers(data));
   }, []);
@@ -22,7 +22,7 @@ const Room = ({ room }) => {
     const reservationInfo = {
       reservationStatus: true,
     };
-    fetch(`http://localhost:5000/rooms/${id}`, {
+    fetch(`https://serene-badlands-89080.herokuapp.com/rooms/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -41,7 +41,7 @@ const Room = ({ room }) => {
       reservationStatus: true,
       email: user?.email,
     };
-    fetch("http://localhost:5000/reservations", {
+    fetch("https://serene-badlands-89080.herokuapp.com/reservations", {
       method: "POST",
       headers: {
         "content-type": "application/json",

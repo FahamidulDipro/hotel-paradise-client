@@ -7,7 +7,7 @@ const AddRoom = () => {
   const { register, handleSubmit, reset } = useForm();
   const navigate = useNavigate();
   const onSubmit = (data) => {
-    fetch("http://localhost:5000/addRoom", {
+    fetch("https://serene-badlands-89080.herokuapp.com/addRoom", {
       method: "POST",
       headers: {
         "content-type": "application/json",
