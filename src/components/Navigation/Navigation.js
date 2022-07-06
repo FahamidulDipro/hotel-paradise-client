@@ -24,7 +24,7 @@ const Navigation = () => {
   };
   return (
     <>
-      <Navbar bg="light" expand="lg">
+      <Navbar bg="light" expand="lg" className="fixed-top">
       
         <Container>
           <NavLink to="/" className="text-decoration-none ">

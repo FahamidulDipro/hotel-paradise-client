@@ -40,7 +40,10 @@ const UpdatePrice = () => {
     setPrice(event.target.value);
   };
   return (
-    <div className="d-flex justify-content-center align-items-center mt-5">
+    <div
+      className="d-flex justify-content-center align-items-center "
+      style={{ marginTop: "150px" }}
+    >
       {console.log(selectedRoom)}
       <Card border="light" style={{ width: "18rem" }}>
         <Card.Header

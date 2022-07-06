@@ -86,7 +86,7 @@ const Room = ({ room }) => {
                 handleReservation(_id);
               }}
             >
-              Reservation
+              Make Reservation
             </Button>}
             </div>
        
