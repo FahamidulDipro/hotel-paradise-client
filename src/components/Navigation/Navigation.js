@@ -25,7 +25,7 @@ const Navigation = () => {
   return (
     <>
       <Navbar bg="light" expand="lg">
-        {console.log(adminStatus)}
+      
         <Container>
           <NavLink to="/" className="text-decoration-none ">
             <Navbar.Brand className="text-primary fw-bold text-uppercase">

@@ -10,6 +10,7 @@ import Signup from "./components/Signup/Signup";
 import NotFound from "./components/NotFound/NotFound";
 import RequireAuth from "./components/RequireAuth/RequireAuth";
 import UserDetails from "./components/UserDetails/UserDetails";
+import UpdatePrice from "./components/UpdatePrice/UpdatePrice";
 
 function App() {
   return (
@@ -38,6 +39,10 @@ function App() {
         ></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/signup" element={<Signup></Signup>}></Route>
+        <Route
+          path="/update/:roomId"
+          element={<UpdatePrice></UpdatePrice>}
+        ></Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
     </div>

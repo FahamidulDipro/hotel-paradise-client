@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Card, Col } from "react-bootstrap";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 
 const Room = ({ room }) => {
   const { _id, roomType, price, reservationStatus } = room;
   const [user] = useAuthState(auth);
-
+  const navigate = useNavigate();
+  //Loading Users from database
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:5000/users")
+      .then((res) => res.json())
+      .then((data) => setUsers(data));
+  }, []);
+  const selectedUser = users.find((u) => u.email === user?.email);
+  const adminStatus = selectedUser?.role;
   //Updating the status
   const updateStatus = (id) => {
     const reservationInfo = {
@@ -45,6 +55,9 @@ const Room = ({ room }) => {
         window.location.reload();
       });
   };
+  const updateHandler = (id) => {
+    navigate(`/update/${id}`);
+  };
   return (
     <Col lg={4}>
       <Card style={{ width: "18rem" }}>
@@ -63,14 +76,22 @@ const Room = ({ room }) => {
               <b>Booked</b>
             </p>
           ) : (
-            <Button
-              variant="primary"
-              onClick={() => {
-                handleReservation(_id);
-              }}
-            >
-              Book Reservation
-            </Button>
+            <div className="d-flex justify-content-center">
+              {" "}
+              <Button
+                variant="primary me-3"
+                onClick={() => {
+                  handleReservation(_id);
+                }}
+              >
+                Reservation
+              </Button>
+              {adminStatus ? (
+                <Button variant="success" onClick={() => updateHandler(_id)}>
+                  Update Price
+                </Button>
+              ) : null}
+            </div>
           )}
         </Card.Body>
       </Card>
