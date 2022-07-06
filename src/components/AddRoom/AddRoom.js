@@ -1,9 +1,11 @@
 import React from "react";
 import { Card } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 const AddRoom = () => {
   const { register, handleSubmit, reset } = useForm();
+  const navigate = useNavigate();
   const onSubmit = (data) => {
     fetch("http://localhost:5000/addRoom", {
       method: "POST",
@@ -16,6 +18,7 @@ const AddRoom = () => {
       .then((result) => console.log(result));
     console.log(data);
     reset();
+    navigate("/");
   };
 
   return (

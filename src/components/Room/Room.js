@@ -70,11 +70,7 @@ const Room = ({ room }) => {
           <p style={{fontSize:"20px"}}>
             <b>Price:</b> $<span className="text-primary">{price}</span>
           </p>
-          {reservationStatus ? (
-            <p className="text-danger">
-              <b>Booked</b>
-            </p>
-          ) : (
+         
             <div >
               {" "}
             
@@ -82,7 +78,9 @@ const Room = ({ room }) => {
                 <Button variant="success text-uppercase fw-bold" onClick={() => updateHandler(_id)}>
                   Update Price
                 </Button>
-              ) :   <Button
+              ) :  reservationStatus? <p className="text-danger">
+              <b>Booked</b>
+            </p>: <Button
               variant="primary me-3 text-uppercase fw-bold"
               onClick={() => {
                 handleReservation(_id);
@@ -91,7 +89,7 @@ const Room = ({ room }) => {
               Reservation
             </Button>}
             </div>
-          )}
+       
         </Card.Body>
       </Card>
     </Col>
