@@ -4,8 +4,8 @@ import Rooms from '../Rooms/Rooms';
 
 const Home = () => {
     return (
-        <div style={{marginTop:"150px"}}>
-           <Rooms></Rooms>
+        <div  >
+           <Rooms ></Rooms>
            <Footer></Footer>
         </div>
     );

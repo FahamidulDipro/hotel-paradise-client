@@ -24,9 +24,9 @@ const AddRoom = () => {
   return (
     <div
       className="d-flex justify-content-center align-items-center"
-      style={{ marginTop: "150px" }}
+     
     >
-      <Card border="light" style={{ width: "18rem" }}>
+      <Card border="light" style={{ width: "18rem",marginTop: "150px" }}  >
         <Card.Header
           className="text-uppercase fw-bold  text-primary border-0"
           style={{ fontSize: "30px" }}

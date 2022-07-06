@@ -26,8 +26,8 @@ const Statistics = () => {
     numberOfReservation: filteredReservation(user?.email).length,
   }));
   return (
-    <div style={{ marginTop: "100px" }}>
-      <Table striped bordered hover className="my-5 container">
+    <div style={{marginTop:"60px"}}>
+      <Table striped bordered hover className="container" >
         <thead>
           <tr>
             <th>#</th>

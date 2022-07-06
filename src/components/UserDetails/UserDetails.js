@@ -22,9 +22,9 @@ const UserDetails = () => {
       };
      
     return (
-        <div style={{ marginTop: "150px" }}>
-         <Table striped bordered hover className="my-5 container">
-        <thead>
+        <div style={{ marginTop: "60px" }}>
+         <Table striped bordered hover className=" container" >
+        <thead >
           <tr>
             <th>#</th>
             <th>Users</th>

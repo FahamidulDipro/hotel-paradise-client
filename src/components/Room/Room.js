@@ -59,11 +59,11 @@ const Room = ({ room }) => {
     navigate(`/update/${id}`);
   };
   return (
-    <Col lg={4}>
+    <Col lg={4} style={{marginTop:"150px"}}>
       <Card style={{ width: "18rem" }} className="text-start border-0 shadow-lg">
         <Card.Img variant="top" src={img} />
         <Card.Body>
-          <Card.Title className="text-uppercase">{roomType}</Card.Title>
+          <Card.Title className="text-uppercase fw-bold">{roomType}</Card.Title>
           <Card.Text>
            {description}
           </Card.Text>

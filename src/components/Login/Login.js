@@ -34,7 +34,7 @@ const Login = () => {
   }
   return (
     <div className="d-flex justify-content-center align-items-center mt-5">
-      <Card border="light" style={{ width: "18rem" }}>
+      <Card border="light" style={{ width: "18rem",marginTop: "150px" }}>
         <Card.Header className="text-uppercase fw-bold display-6 text-primary border-0">
           Login
         </Card.Header>
