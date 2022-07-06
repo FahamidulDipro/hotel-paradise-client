@@ -11,6 +11,17 @@ const Signup = () => {
   const [passwordMatchError, setPasswordMatchError] = useState("");
   const navigate = useNavigate();
 
+  const addUser = (email, currentUser) => {
+    fetch(`http://localhost:5000/user/${email}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(currentUser),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+  };
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
     const password = data.password;
@@ -27,7 +38,11 @@ const Signup = () => {
     }
     console.log(data);
   };
+
   if (user) {
+    const currentUser = { email: user?.user?.email };
+    addUser(user?.user?.email, currentUser);
+    console.log(user?.user?.email);
     navigate("/");
   }
   let displayError;
