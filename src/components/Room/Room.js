@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 
 const Room = ({ room }) => {
-  const { _id, roomType, price, reservationStatus } = room;
+  const { _id, roomType, price, reservationStatus, img,description } = room;
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
   //Loading Users from database
@@ -60,37 +60,36 @@ const Room = ({ room }) => {
   };
   return (
     <Col lg={4}>
-      <Card style={{ width: "18rem" }}>
-        <Card.Img variant="top" src="holder.js/100px180" />
+      <Card style={{ width: "18rem" }} className="text-start border-0 shadow-lg">
+        <Card.Img variant="top" src={img} />
         <Card.Body>
-          <Card.Title>{roomType}</Card.Title>
+          <Card.Title className="text-uppercase">{roomType}</Card.Title>
           <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
+           {description}
           </Card.Text>
-          <p>
-            <b>Price:</b> {price}
+          <p style={{fontSize:"20px"}}>
+            <b>Price:</b> $<span className="text-primary">{price}</span>
           </p>
           {reservationStatus ? (
             <p className="text-danger">
               <b>Booked</b>
             </p>
           ) : (
-            <div className="d-flex justify-content-center">
+            <div >
               {" "}
-              <Button
-                variant="primary me-3"
-                onClick={() => {
-                  handleReservation(_id);
-                }}
-              >
-                Reservation
-              </Button>
+            
               {adminStatus ? (
-                <Button variant="success" onClick={() => updateHandler(_id)}>
+                <Button variant="success text-uppercase fw-bold" onClick={() => updateHandler(_id)}>
                   Update Price
                 </Button>
-              ) : null}
+              ) :   <Button
+              variant="primary me-3 text-uppercase fw-bold"
+              onClick={() => {
+                handleReservation(_id);
+              }}
+            >
+              Reservation
+            </Button>}
             </div>
           )}
         </Card.Body>

@@ -54,14 +54,21 @@ const Navigation = () => {
                 Statistics
               </NavLink>
              {
-              adminStatus? <NavLink
+              adminStatus? <><NavLink
               to="/userDetails"
               className={({ isActive }) =>
                 isActive ? "active-link" : "link"
               }
             >
               User Details
-            </NavLink>:null
+            </NavLink><NavLink
+              to="/addRoom"
+              className={({ isActive }) =>
+                isActive ? "active-link" : "link"
+              }
+            >
+             Add Room
+            </NavLink></> :null
              }
 
               {user ? (

@@ -1,24 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Card } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { useNavigate, useParams } from "react-router-dom";
 
-const UpdatePrice = () => {
-  const { roomId } = useParams("roomId");
-  const navigate = useNavigate();
-  //Fetching all room data
-  const [rooms, setRooms] = useState([]);
-  useEffect(() => {
-    fetch("http://localhost:5000/rooms")
-      .then((res) => res.json())
-      .then((data) => setRooms(data));
-  }, []);
-  const selectedRoom = rooms.find((room) => room._id === roomId);
+const AddRoom = () => {
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
-    data.roomId = roomId;
-    fetch("http://localhost:5000/updatePrice", {
-      method: "PUT",
+    fetch("http://localhost:5000/addRoom", {
+      method: "POST",
       headers: {
         "content-type": "application/json",
       },
@@ -26,45 +14,52 @@ const UpdatePrice = () => {
     })
       .then((res) => res.json())
       .then((result) => console.log(result));
-    reset();
     console.log(data);
-    navigate("/");
+    reset();
   };
-  const selectedRoomPrice = selectedRoom?.price;
-  const [price, setPrice] = useState([]);
-  useEffect(() => {
-    setPrice(selectedRoomPrice);
-  }, [selectedRoomPrice]);
-  const handleInputChange = (event) => {
-    console.log(event.target.value);
-    setPrice(event.target.value);
-  };
+
   return (
     <div className="d-flex justify-content-center align-items-center mt-5">
-      {console.log(selectedRoom)}
       <Card border="light" style={{ width: "18rem" }}>
         <Card.Header
           className="text-uppercase fw-bold  text-primary border-0"
           style={{ fontSize: "30px" }}
         >
-          Update Price
+          Add Room
         </Card.Header>
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="p-3 border-0 shadow-lg"
         >
           <input
+            {...register("roomType", { required: true })}
+            type="text"
+            className="form-control my-3"
+            placeholder="Room Type"
+          />
+          <input
+            {...register("description", { required: true })}
+            type="text"
+            className="form-control my-3"
+            placeholder="Short Description"
+          />
+          <input
+            {...register("img", { required: true })}
+            type="text"
+            className="form-control my-3"
+            placeholder="Image"
+          />
+          <input
             {...register("price", { required: true })}
             type="number"
-            value={price}
-            onChange={handleInputChange}
             className="form-control my-3"
+            placeholder="Price"
           />
 
           <input
             type="submit"
             className="btn w-100 bg-primary text-light fw-bold border-0"
-            value="UPDATE PRICE"
+            value="ADD ROOM"
           />
         </form>
         <Card.Body></Card.Body>
@@ -73,4 +68,4 @@ const UpdatePrice = () => {
   );
 };
 
-export default UpdatePrice;
+export default AddRoom;

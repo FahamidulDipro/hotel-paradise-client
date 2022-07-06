@@ -11,6 +11,7 @@ import NotFound from "./components/NotFound/NotFound";
 import RequireAuth from "./components/RequireAuth/RequireAuth";
 import UserDetails from "./components/UserDetails/UserDetails";
 import UpdatePrice from "./components/UpdatePrice/UpdatePrice";
+import AddRoom from "./components/AddRoom/AddRoom";
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
           path="/update/:roomId"
           element={<UpdatePrice></UpdatePrice>}
         ></Route>
+        <Route path="/addRoom" element={<AddRoom></AddRoom>}></Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
     </div>
